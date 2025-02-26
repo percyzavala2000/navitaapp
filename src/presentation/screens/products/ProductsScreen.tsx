@@ -2,7 +2,6 @@ import {View, Text, FlatList} from 'react-native';
 import {globalSyles} from '../../theme/theme';
 import PrimaryButton from '../../components/shared/PrimaryButton';
 import {type NavigationProp, useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
 import {type RootStackParams } from '../../routes/StackNavigator';
 
 const products = [
@@ -39,19 +38,16 @@ const products = [
 ];
 const ProductsScreen = () => {
 
-  const [selectId, setSelectId] = useState(0)
   const navigation=useNavigation<NavigationProp<RootStackParams>>();
   return (
     <View style={globalSyles.container}>
       <Text style={{marginBottom: 10, fontSize: 30}}>Producto</Text>
       <FlatList
         data={products}
-        renderItem={({item, index, separators}) => (
-          setSelectId(item.id),
+        renderItem={({item}) => (
           <PrimaryButton label={item.name} onPress={() => navigation.navigate('Producto' ,{Id:item.id,name:item.name,price:item.price})} />
         )}
-        keyExtractor={(item) => item.id.toString()}
-
+  
       />
       <Text style={{marginBottom: 10, fontSize: 30}}>Ajustes</Text>
       <PrimaryButton label='Ajustes' onPress={() => navigation.navigate('Settings')} />
