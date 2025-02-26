@@ -20,7 +20,7 @@ export const StackNavigator = () => {
     <Stack.Navigator screenOptions={{headerShown:true,headerStyle:{
      elevation:0,
      shadowColor:'transparent'
-    },presentation:'modal'} }>
+    }} }>
       <Stack.Screen  name="Home" component={HomeScreen} />
       <Stack.Screen name="Products" component={ProductsScreen} />
       <Stack.Screen name="Settings" component={SettingsScreen} /> 
