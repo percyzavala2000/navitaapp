@@ -6,6 +6,7 @@ import {globalColors} from '../theme/theme';
 import {Text} from 'react-native';
 import { MaterialTopTabsNavigator } from './MaterialTopTabsNavigator';
 import { StackNavigator } from './StackNavigator';
+import { IonIcon } from '../components/shared/IonIcon';
 
 export const BottonTabsNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -13,6 +14,7 @@ export const BottonTabsNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarActiveTintColor: globalColors.primary,
         sceneStyle: {backgroundColor: globalColors.background},
         tabBarLabelStyle: {
           marginBottom: 5,
@@ -32,7 +34,7 @@ export const BottonTabsNavigator = () => {
         options={{
           title: 'Tab1',
           tabBarIcon(props) {
-            return <Text style={{color: props.color}}>Tab1</Text>;
+            return <IonIcon name='arrow-down-circle-outline' color={props.color}/>;
           },
         }}
         component={Tab1Screen}
@@ -42,7 +44,7 @@ export const BottonTabsNavigator = () => {
         options={{
           title: 'Tab2',
           tabBarIcon(props) {
-            return <Text style={{color: props.color}}>Tab2</Text>;
+            return <IonIcon name='airplane-outline' color={props.color}/>;
           },
         }}
         component={StackNavigator}
@@ -50,11 +52,14 @@ export const BottonTabsNavigator = () => {
       <Tab.Screen
         name="Tab3"
         options={{
-          title: 'Tab3',
+          title: 'Tab32',
           tabBarIcon(props) {
-            return <Text style={{color: props.color}}>Tab3</Text>;
+            return <IonIcon name='accessibility-outline' color={props.color}/>;
           },
+          
+          
         }}
+        
         component={MaterialTopTabsNavigator}
       />
     </Tab.Navigator>

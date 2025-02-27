@@ -9,6 +9,7 @@ import {StackNavigator} from './StackNavigator';
 import ProfileScreen from '../screens/profile/ProfileScreen';
 import {globalColors} from '../theme/theme';
 import { BottonTabsNavigator } from './BottonTabsNavigator';
+import { IonIcon } from '../components/shared/IonIcon';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,9 +29,13 @@ const SideMenuNavigator = () => {
           paddingHorizontal: 20,
         },
       }}>
-      <Drawer.Screen name="Tabs" component={BottonTabsNavigator} />
+      <Drawer.Screen options={{drawerIcon(props) {
+        return <IonIcon name='home-outline' color={props.color}/>;
+      },}} name="Tabs" component={BottonTabsNavigator} />
       {/* <Drawer.Screen name="StackNavigator" component={StackNavigator} /> */}
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
+      <Drawer.Screen options={{drawerIcon(props) {
+        return <IonIcon name='people-outline' color={props.color}/>;
+      },}} name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );
 };
